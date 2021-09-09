@@ -1,1 +1,1 @@
-ss
+print("test")
