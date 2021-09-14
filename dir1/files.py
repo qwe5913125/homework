@@ -7,7 +7,7 @@ def read_file(nam):
     return content
 
 
-def way_better(filename):
+def way_better2(filename):
     with open(filename) as f: #Контекстный менеджер
         return f.read()
 
@@ -17,8 +17,7 @@ def write_to_file(filename, content, mode='w'):
 
 
 
+if __name__ == '__main__':
 
-
-write_to_file('text.txt', 'test ivan', 'w')
-print(way_better("text.txt"))
+    print(way_better2("data.json"))
 
