@@ -7,4 +7,18 @@ def read_file(nam):
     return content
 
 
-print(read_file("text.txt"))
+def way_better(filename):
+    with open(filename) as f: #Контекстный менеджер
+        return f.read()
+
+def write_to_file(filename, content, mode='w'):
+    with open(filename, mode=mode) as f:
+        f.write(content)
+
+
+
+
+
+write_to_file('text.txt', 'test ivan', 'w')
+print(way_better("text.txt"))
+
