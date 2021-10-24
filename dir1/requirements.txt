@@ -1,7 +1,10 @@
 pkg_resources==0.0.0
 pycodestyle==2.7.0
 six==1.16.0
-requests
-flask
+requests~=2.18.4
+flask~=2.0.2
 Flask
+flask_wtf
+email_validator
+
 
