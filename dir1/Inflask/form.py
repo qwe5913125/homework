@@ -1,5 +1,7 @@
 import datetime
 import time
+import os
+import random
 
 from flask import Flask, request
 
@@ -27,6 +29,10 @@ class BirthDayValid(FlaskForm):
     dt = StringField(label='dt', validators=[validators.AnyOf(values=[x])])
     print(dt)
 
+class IntValid(FlaskForm):
+    e = StringField(label='E', validators=[validators.NumberRange(1, 30)])
+    print('E ravno======', e)
+
 
 
 app = Flask(__name__)
@@ -37,21 +43,39 @@ app.config.update(
     WTF_CSRF_ENABLED=False,
 )
 
+random.seed(os.environ['S'])
+
+x1 = 0
+def get_in():
+    global x1
+    x1 = random.randint(1, 30)
+    return True
+
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
+    print('!!!!!!!!!!!!!!!!')
+    get_in()
+    global x1
+    print('1', x1)
+    return 'Число загадано!', 200
+
+
+
+@app.route('/guess', methods=['POST'])
+def my_guest():
     if request.method == 'POST':
-        print(request.form)
-        form = ContactForm(request.form)
-        print(form.validate())
+        er =list(request.form.values())
+        print(er[0])
+        global x1
 
-        if form.validate():
-            return ('valid', 200)
+        if (str(x1) == er[0]):
+            print("DA!!!!!!!!!!!")
         else:
-            return('invalid', 400)
+            print('Net!!!')
 
-    if request.method == 'GET':
-        return 'hello world!3', 200
+    return('test2', 200)
+
 
 
 @app.route('/data', methods=['GET', 'POST'])
