@@ -1,7 +1,7 @@
 #!/home/ivan/python/homework/dir1/test1/bin/python
 
-import sys
 import getopt
+import sys
 import sysconfig
 
 valid_opts = ['prefix', 'exec-prefix', 'includes', 'libs', 'cflags',
